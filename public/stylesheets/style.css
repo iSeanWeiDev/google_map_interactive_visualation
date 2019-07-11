@@ -1,5 +1,6 @@
 body {
   font: 14px "Handglobes", Helvetica, Arial, sans-serif;
+  
 }
 
 header {
@@ -8,6 +9,7 @@ header {
 
 #world-map {
   position: relative;
-  width: 100%;
-  height: 850px;
+  width: 95%;
+  width: 100vw;
+  height: 80vh;
 }

@@ -10,7 +10,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/api/data', (req, res) => {
-  console.log(req.body);
   CountryModel.findAll({
     attributes: [
       'id', 'un_country_name', 'latitude', 'longitude'

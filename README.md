@@ -15,3 +15,9 @@ This is one of interactive datamap visualation for analysing data about peoples 
 * Ajax
 * d3.js
 * jQuery seletor
+
+### Useful urls
+* https://github.com/markmarkoh/datamaps/blob/master/README.md
+* https://codepen.io/idrakimuhamad/pen/ZyVyeK
+* https://stackoverflow.com/questions/42796257/datamaps-dashed-animated-arc
+* https://datamaps.github.io/

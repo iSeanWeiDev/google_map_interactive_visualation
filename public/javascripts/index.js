@@ -47,15 +47,32 @@ $(function() {
                                                     longitude: objCountryList.longitude,
                                                 });
                                                 arrArc.push({
+                                                    // origin: {
+                                                    //     latitude: objCountry.latitude,
+                                                    //     longitude: objCountry.longitude,
+                                                    //     peoples: objPeoples[props],
+                                                    //     country_name: objCountryList.un_country_name
+                                                    // },
+                                                    // destination: {
+                                                    //     latitude: objCountryList.latitude,
+                                                    //     longitude: objCountryList.longitude,
+                                                    //     peoples: objPeoples[props]
+                                                    // },
+                                                    // options: {
+                                                    //     strokeWidth: 1,
+                                                    //     strokeColor: 'rgba(100, 10, 200, 0.4)',
+                                                    //     greatArc: true
+                                                    // }
                                                     origin: {
-                                                        latitude: objCountry.latitude,
-                                                        longitude: objCountry.longitude,
-                                                        peoples: objPeoples[props]
-                                                    },
-                                                    destination: {
                                                         latitude: objCountryList.latitude,
                                                         longitude: objCountryList.longitude,
                                                         peoples: objPeoples[props]
+                                                    },
+                                                    destination: {
+                                                        latitude: objCountry.latitude,
+                                                        longitude: objCountry.longitude,
+                                                        peoples: objPeoples[props],
+                                                        country_name: objCountryList.un_country_name
                                                     },
                                                     options: {
                                                         strokeWidth: 1,
@@ -86,17 +103,19 @@ $(function() {
                         map.bubbles(arrBubble);
                         map.arc(arrArc,
                             {
-                                strokeWidth: 0.01,
+                                strokeWidth: 1,
                                 arcSharpness: 1,
                                 popupOnHover: true,
-                                animationSpeed: 1000
+                                animationSpeed: 600,
+                                popupTemplate: function(data) {
+                                    // hover the arc more kindly
+                                    return '<div class="hoverinfo"><strong>Country: ' 
+                                            + data.destination.country_name + 
+                                            ', </strong><strong> Peoples: </strong> ' 
+                                            + data.destination.peoples + ' </div>'
+                                }
                             }
                         );
-
-                        // d3.selectAll('.datamaps-arc').on('mouseover', function(info) {
-                        //     console.log(info.origin.peoples );
-                        //     return '<div class="hoverinfo">' + info.origin.peoples + '<\div>'
-                        // });
                     });
                 });
             
@@ -108,9 +127,8 @@ $(function() {
         arrBubble = [];
         arrArc = [];
         arrCountries = [];
-
+        // Initialize the google map
         $('#world-map').children().remove();
-
         init();
     }
 
